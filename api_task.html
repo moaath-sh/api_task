@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#">
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        //fetch all products
+      fetch("https://fakestoreapi.com/products")
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
+       
+        //add new product
+
+      fetch("https://fakestoreapi.com/products", {
+        method: "POST",
+        body: JSON.stringify({
+          title: "speaker",
+          price: 13.5,
+          description: "the best speaker in our shop",
+          image: "https://i.pravatar.cc",
+          category: "electronic",
+        }),
+      })
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+
+
+        //update product with id 7
+        
+      fetch("https://fakestoreapi.com/products/7", {
+        method: "PUT",
+        body: JSON.stringify({
+          title: "phone handler",
+          price: 9.5,
+          description: "you will get very good experince with this",
+          image: "https://i.pravatar.cc",
+          category: "electronic",
+        }),
+      })
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+
+
+      //delete product
+      fetch("https://fakestoreapi.com/products/6", {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((json) => console.log(json));
+
+
+    </script>
+  </body>
+</html>
